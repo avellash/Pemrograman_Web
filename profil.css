@@ -141,3 +141,38 @@ footer {
     padding: 15px;
   }
 }
+
+.dark-mode {
+  background: #222;
+  color: #f1f1f1;
+}
+.dark-mode .suka-item {
+  background: #444;
+  color: #fff;
+}
+.dark-mode footer {
+  background: #111;
+}
+.dark-mode .intro, 
+.dark-mode .summary {
+  color: #ddd;
+}
+
+#scrollTopBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #89c2d9;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  font-size: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  transition: 0.3s;
+}
+#scrollTopBtn:hover {
+  background: #4a7da0;
+}

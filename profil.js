@@ -1,28 +1,38 @@
-const sukaItems = document.querySelectorAll(".suka-item");
+const toggleBtn = document.getElementById("toggleMode");
+const body = document.body;
 
-const sukaDeskripsi = {
-  "Meng": "Bestiee, kukenalkan sama anabul kesayanganku ya! Namanya Milo, dia suka keluyuran dan pulang kalau lagi laper aja, maklum anak ganteng.",
-  "K-POP": "Salah satu hobiku adalah mendengarkan musik dan yang paling sering kudengarkan adalah K-POP. Aku sudah meluncur ke dunia ini sejak 2017, boygrub pertamaku itu BTS, well siapa sih yg gatau BTS. Untuk sekarang aku banyak menyukai gg maupun bg yang kalau disebutin semuanya ngga akan cukup.",
-  "Dance": "Alasan lain aku sangat menyukai K-POP karena mereka punya koreografi untuk beberapa lagu mereka dan menurutku itu keren, mulai dari situlah aku sering mengikuti dance mereka yaa walaupun hasilnya mengecewakan.",
-  "Biola": "Menurutku biola itu adalah alat musik yang sangat sangaaattt elegan, suaranya merdu dan menenangkan. Rasanya cocok untuk disatukan dengan ballet dan ice skate.",
-  "Alam": "Jujur saja aku sangat menyukai hal-hal yang berbau ketenangan, seperti setiap melihat tempat-tempat yang memiliki hamparan alam yang luas membuat bisa membuatku bersyukur dan lega. Tentu saja ada keinginan untuk mengunjungi tempat itu tapi yasudahlah, suatu saat nanti pasi ada jalannya."
+toggleBtn.addEventListener("click", () => {
+  body.classList.toggle("dark-mode");
+  if (body.classList.contains("dark-mode")) {
+    toggleBtn.textContent = "☀️ Light Mode";
+  } else {
+    toggleBtn.textContent = "🌙 Dark Mode";
+  }
+});
+
+const scrollBtn = document.getElementById("scrollTopBtn");
+
+window.onscroll = function() {
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    scrollBtn.style.display = "block";
+  } else {
+    scrollBtn.style.display = "none";
+  }
 };
 
-const deskripsiBox = document.createElement("div");
-deskripsiBox.classList.add("deskripsi-box");
-document.querySelector(".suka").appendChild(deskripsiBox);
-
-sukaItems.forEach(item => {
-  item.addEventListener("click", () => {
-    const judul = item.querySelector("h3").textContent;
-    const text = sukaDeskripsi[judul];
-
-    if (deskripsiBox.style.display === "block" && deskripsiBox.innerText.includes(judul)) {
-      deskripsiBox.style.display = "none";
-      deskripsiBox.innerHTML = "";
-    } else {
-      deskripsiBox.innerHTML = `<p><strong>${judul}</strong> - ${text}</p>`;
-      deskripsiBox.style.display = "block";
-    }
-  });
+scrollBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
+
+const typingText = document.getElementById("typing-text");
+const text = "Hai Bestie 👋";
+let index = 0;
+
+function typeEffect() {
+  if (index < text.length) {
+    typingText.textContent += text.charAt(index);
+    index++;
+    setTimeout(typeEffect, 120); 
+  }
+}
+typeEffect();
