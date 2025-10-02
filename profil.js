@@ -1,7 +1,8 @@
 // Ambil semua elemen hobi
 const hobiItems = document.querySelectorAll(".hobi-item");
+const deskripsiBox = document.getElementById("deskripsiBox");
 
-// Buat deskripsi hobi (bisa kamu ubah sesuai keinginan)
+// Isi deskripsi hobi
 const hobiDeskripsi = {
   "🎵 Musik": "Aku suka mendengarkan musik untuk meningkatkan mood dan semangat belajar.",
   "📚 Membaca": "Membaca novel dan buku motivasi jadi salah satu cara aku mencari inspirasi.",
@@ -9,15 +10,17 @@ const hobiDeskripsi = {
   "💻 Teknologi": "Aku tertarik dengan teknologi, terutama pemrograman dan dunia web."
 };
 
-// Buat tempat untuk menampilkan deskripsi
-const deskripsiBox = document.createElement("div");
-deskripsiBox.classList.add("deskripsi-box");
-document.querySelector(".hobi").appendChild(deskripsiBox);
-
-// Tambahkan event listener ke setiap hobi
+// Tambahkan interaksi klik
 hobiItems.forEach(item => {
   item.addEventListener("click", () => {
     const text = hobiDeskripsi[item.textContent];
-    deskripsiBox.innerHTML = `<p><strong>${item.textContent}</strong> - ${text}</p>`;
+    if (deskripsiBox.style.display === "block" && deskripsiBox.innerText.includes(item.textContent)) {
+      // toggle: sembunyikan kalau klik lagi
+      deskripsiBox.style.display = "none";
+      deskripsiBox.innerHTML = "";
+    } else {
+      deskripsiBox.innerHTML = `<p><strong>${item.textContent}</strong> - ${text}</p>`;
+      deskripsiBox.style.display = "block";
+    }
   });
 });

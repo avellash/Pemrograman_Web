@@ -8,32 +8,20 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  background: #eaf4f4; /* biru putih pastel */
+  background: #eaf4f4;
   color: #333;
 }
 
 /* Cover Section */
 .cover {
-  background: url("https://picsum.photos/1200/600?blur") no-repeat center/cover;
   height: 100vh;
+  background: linear-gradient(135deg, #a8dadc, #89c2d9);
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-}
-
-.cover .overlay {
-  background: rgba(137, 194, 217, 0.6); /* overlay pastel biru transparan */
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.bio {
   text-align: center;
   color: #fff;
+  padding: 20px;
 }
 
 .bio img {
@@ -41,7 +29,7 @@ body {
   height: 150px;
   border-radius: 50%;
   margin-bottom: 15px;
-  border: 4px solid white;
+  border: 4px solid #fff;
 }
 
 .bio h1 {
@@ -62,7 +50,7 @@ body {
 }
 
 .hobi h2 {
-  color: #4a7da0; /* biru pastel agak gelap */
+  color: #4a7da0;
   margin-bottom: 30px;
 }
 
@@ -74,7 +62,7 @@ body {
 }
 
 .hobi-item {
-  background: #a8dadc; /* biru pastel */
+  background: #a8dadc;
   color: #333;
   padding: 20px 30px;
   border-radius: 15px;
@@ -85,36 +73,57 @@ body {
 
 .hobi-item:hover {
   transform: scale(1.1);
-  background: #89c2d9; /* hover biru pastel lebih gelap */
+  background: #89c2d9;
 }
 
-/* Box deskripsi hobi */
+/* Deskripsi Hobi */
 .deskripsi-box {
   margin-top: 30px;
   padding: 20px;
-  background: #cce3f2; /* biru pastel muda */
+  background: #cce3f2;
   border-radius: 10px;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
   font-size: 1rem;
   text-align: center;
+  display: none; /* awalnya disembunyikan */
 }
 
 /* Footer */
 footer {
-  background: #89c2d9; /* biru pastel */
+  background: #89c2d9;
   color: #fff;
   text-align: center;
   padding: 30px 20px;
 }
 
-footer a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
+.social-links {
+  margin-bottom: 15px;
 }
 
-footer a:hover {
-  text-decoration: underline;
+.social-links a {
+  margin: 0 10px;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: #333;
+}
+
+/* Responsif */
+@media (max-width: 600px) {
+  .bio h1 {
+    font-size: 2rem;
+  }
+  .bio p {
+    font-size: 1rem;
+  }
+  .hobi-item {
+    font-size: 1rem;
+    padding: 15px 20px;
+  }
 }
