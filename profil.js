@@ -1,25 +1,32 @@
-// Ambil semua elemen hobi
-const hobiItems = document.querySelectorAll(".hobi-item");
-const deskripsiBox = document.getElementById("deskripsiBox");
+// Ambil semua elemen "Hal yang Kusukai"
+const sukaItems = document.querySelectorAll(".suka-item");
 
-// Isi deskripsi hobi
-const hobiDeskripsi = {
-  "🎵 Musik": "Aku suka mendengarkan musik untuk meningkatkan mood dan semangat belajar.",
-  "📚 Membaca": "Membaca novel dan buku motivasi jadi salah satu cara aku mencari inspirasi.",
-  "🎬 Film & Drama": "Aku suka menonton film dan drama sebagai hiburan di waktu luang.",
-  "💻 Teknologi": "Aku tertarik dengan teknologi, terutama pemrograman dan dunia web."
+// Buat deskripsi sesuai item (bisa disesuaikan lagi sama kamu)
+const sukaDeskripsi = {
+  "Meng": "Aku suka mendengarkan musik untuk menemani belajar dan santai.",
+  "K-POP": "Aku suka musik dan konser K-POP, memberi energi positif.",
+  "Dance": "Menari jadi salah satu cara aku mengekspresikan diri.",
+  "Cooking": "Aku suka mencoba resep baru dan memasak di waktu senggang.",
+  "Alam": "Menikmati alam membuatku lebih tenang dan segar."
 };
 
-// Tambahkan interaksi klik
-hobiItems.forEach(item => {
+// Buat box deskripsi dinamis
+const deskripsiBox = document.createElement("div");
+deskripsiBox.classList.add("deskripsi-box");
+document.querySelector(".suka").appendChild(deskripsiBox);
+
+// Event listener untuk tiap item
+sukaItems.forEach(item => {
   item.addEventListener("click", () => {
-    const text = hobiDeskripsi[item.textContent];
-    if (deskripsiBox.style.display === "block" && deskripsiBox.innerText.includes(item.textContent)) {
-      // toggle: sembunyikan kalau klik lagi
+    const judul = item.querySelector("h3").textContent;
+    const text = sukaDeskripsi[judul];
+
+    if (deskripsiBox.style.display === "block" && deskripsiBox.innerText.includes(judul)) {
+      // toggle off
       deskripsiBox.style.display = "none";
       deskripsiBox.innerHTML = "";
     } else {
-      deskripsiBox.innerHTML = `<p><strong>${item.textContent}</strong> - ${text}</p>`;
+      deskripsiBox.innerHTML = `<p><strong>${judul}</strong> - ${text}</p>`;
       deskripsiBox.style.display = "block";
     }
   });
